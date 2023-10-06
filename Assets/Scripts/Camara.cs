@@ -9,7 +9,7 @@ public class Camara : MonoBehaviour
 
     void Update()
     {
-        if(Cube != null){
+        if(Cube != null){ 
             transform.position = Cube.position+offset;
         }
     }

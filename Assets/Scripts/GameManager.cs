@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,25 +9,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject play;
     [SerializeField] GameObject ingame;
 
-    public TextMeshProUGUI texto;
-    private int contador = 0; 
 
     void Start()
     {
         ingame.SetActive(false);
-        texto = GetComponent<TextMeshProUGUI>();
-        ActualizarContador();
     }
 
     void Update()
     {
         
-    }
-
-    private void ActualizarContador(){
-        contador++;
-        string contadorConCeros = contador.ToString("D5");
-        texto.text = contadorConCeros;
     }
 
     public void activarig(){
