@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3087616836871961447, guid: 4006fc707148356428c5c5580610c0fa, type: 3}
       propertyPath: m_Name
-      value: estrella
+      value: moneda
       objectReference: {fileID: 0}
     - target: {fileID: 3087616836871961447, guid: 4006fc707148356428c5c5580610c0fa, type: 3}
       propertyPath: m_TagString
-      value: Estrella
+      value: Moneda
       objectReference: {fileID: 0}
     - target: {fileID: 6840315552892610202, guid: 4006fc707148356428c5c5580610c0fa, type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Camara : MonoBehaviour
@@ -9,8 +7,10 @@ public class Camara : MonoBehaviour
 
     void Update()
     {
-        if(Cube != null){ 
-            transform.position = Cube.position+offset;
+        if(Cube.position.y > -2){
+            if(Cube != null){ 
+                transform.position = Cube.position+offset;
+            }
         }
     }
 }

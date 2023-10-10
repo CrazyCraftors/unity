@@ -7,6 +7,9 @@ TagManager:
   - LuckyBox
   - Ladrillo
   - Hongo
+  - Estrella
+  - Flor
+  - Moneda
   layers:
   - Default
   - TransparentFX

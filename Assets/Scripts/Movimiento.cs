@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movimiento : MonoBehaviour
@@ -15,56 +13,36 @@ public class Movimiento : MonoBehaviour
     public float gravity = -9.81f;
     public float extraFallForce = 10.0f;
 
-    private void Start()
-    {
+    private void Start(){
         controller = this.GetComponent<CharacterController>();
     }
-
-    void Update()
-    {
-        if (GameManager.activado == false)
-            return;
-
+    void Update(){
+        if (GameManager.GameRunning == false)return;
         groundedPlayer = controller.isGrounded;
-
-        if (groundedPlayer)
-        {
+        if (groundedPlayer){
             hasJumped = false;
             hitCube = false;
-            if (playerVelocity.y < 0)
-            {
+            if (playerVelocity.y < 0){
                 playerVelocity.y = 0f;
             }
         }
-
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
         controller.Move(move * Time.deltaTime * playerSpeed);
-
-        if (move != Vector3.zero)
-        {
+        if (move != Vector3.zero){
             gameObject.transform.forward = move;
         }
-
-        if (Input.GetButtonDown("Jump") && (!hasJumped || groundedPlayer))
-        {
+        if (Input.GetButtonDown("Jump") && (!hasJumped || groundedPlayer)){
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             hasJumped = true;
         }
-
         playerVelocity.y += gravity * Time.deltaTime;
-
-        if (hitCube)
-        {
+        if (hitCube){
             playerVelocity.y -= extraFallForce * Time.deltaTime;
         }
-
         controller.Move(playerVelocity * Time.deltaTime);
     }
-
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (!groundedPlayer && (hit.gameObject.CompareTag("Ladrillo") || hit.gameObject.CompareTag("LuckyBox")))
-        {
+    void OnControllerColliderHit(ControllerColliderHit hit){
+        if (!groundedPlayer && (hit.gameObject.CompareTag("Ladrillo") || hit.gameObject.CompareTag("LuckyBox"))){
             hitCube = true;
         }
     }

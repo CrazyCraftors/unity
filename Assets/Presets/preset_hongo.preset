@@ -6,7 +6,7 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LuckyBoxController.preset_hongo
+  m_Name: preset_hongo
   m_TargetType:
     m_NativeTypeID: 114
     m_ManagedTypePPtr: {fileID: 11500000, guid: 0e0823b00ef693342a759e5a7494bbed, type: 3}
@@ -25,9 +25,13 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: item
+    propertyPath: ItemPrefab
     value: 
-    objectReference: {fileID: 0}
+    objectReference: {fileID: 6465102084864761872, guid: 7476b1cc6740e16438e95eaaf9f2c0be, type: 3}
+  - target: {fileID: 0}
+    propertyPath: moneda
+    value: 
+    objectReference: {fileID: 4310099836894426426, guid: a0e41f78c924a32498b49c86ae796808, type: 3}
   - target: {fileID: 0}
     propertyPath: moveSpeed
     value: 1
@@ -35,7 +39,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: changedMaterial
     value: 
-    objectReference: {fileID: 2100000, guid: ed061c90482ae2343ac3dd13f2b85d6f, type: 2}
+    objectReference: {fileID: 2100000, guid: 74943d277fab8a54d8c116910822bc75, type: 2}
   - target: {fileID: 0}
     propertyPath: marioController
     value: 

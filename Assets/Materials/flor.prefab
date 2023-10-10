@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: flor
       objectReference: {fileID: 0}
+    - target: {fileID: 6465102084864761872, guid: 7476b1cc6740e16438e95eaaf9f2c0be, type: 3}
+      propertyPath: m_TagString
+      value: Flor
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

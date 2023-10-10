@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class MarioController : MonoBehaviour
@@ -8,11 +7,11 @@ public class MarioController : MonoBehaviour
     private Dictionary<GameObject, int> collisionsWithCubes = new Dictionary<GameObject, int>();
     private Dictionary<GameObject, float> lastTimeScoredWithCube = new Dictionary<GameObject, float>();
     public float bigMarioScaleY = 2f;
-    public UIManager ui;
     public float timeBetweenScoring = 0.5f;
-    public int maxScorePerCube = 3;
     public float raycastLength = 1f;
+    public int maxScorePerCube = 3;
     public Material newMaterial;
+    public UIManager ui;
 
 
     private void Update(){
@@ -23,13 +22,12 @@ public class MarioController : MonoBehaviour
                     if (!collisionsWithCubes.ContainsKey(hit.collider.gameObject)){
                         collisionsWithCubes[hit.collider.gameObject] = 0;
                     }
-                    if (collisionsWithCubes.ContainsKey(hit.collider.gameObject) && collisionsWithCubes[hit.collider.gameObject] >= maxScorePerCube){
-                            Renderer cubeRenderer = hit.collider.gameObject.GetComponent<Renderer>();
-                            if (cubeRenderer != null)
-                            {
-                                cubeRenderer.material = newMaterial;
-                            }
+                    if(collisionsWithCubes.ContainsKey(hit.collider.gameObject) && collisionsWithCubes[hit.collider.gameObject] >= maxScorePerCube){
+                        Renderer cubeRenderer = hit.collider.gameObject.GetComponent<Renderer>();
+                        if (cubeRenderer != null){
+                            cubeRenderer.material = newMaterial;
                         }
+                    }
                     if (!lastTimeScoredWithCube.ContainsKey(hit.collider.gameObject) || Time.time - lastTimeScoredWithCube[hit.collider.gameObject] >= timeBetweenScoring){
                         if (collisionsWithCubes[hit.collider.gameObject] < maxScorePerCube){
                             int randomScore = Random.Range(10, 50);
@@ -45,11 +43,10 @@ public class MarioController : MonoBehaviour
                 }
             }
             if (hit.collider.CompareTag("LuckyBox")){
-            LuckyBoxController luckyBox = hit.collider.GetComponent<LuckyBoxController>();
-            if (luckyBox != null)
-            {
-                luckyBox.GenerateItem();
-            }
+                LuckyBoxController luckyBox = hit.collider.GetComponent<LuckyBoxController>();
+                if (luckyBox != null){
+                    luckyBox.ItemLogic();
+                }
             }
         }
     }
@@ -63,7 +60,7 @@ public class MarioController : MonoBehaviour
                 isBigMario = true;
             }
             Destroy(hit.gameObject);
-            ui.IncreaseScore(60);
+            ui.IncreaseScore(1000);
         }
     }
 }
