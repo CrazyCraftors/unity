@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GoombaController : MonoBehaviour
+public class Enemies : MonoBehaviour
 {
     public float moveSpeed = 2.0f;
     private bool movingRight = true;
@@ -37,7 +37,7 @@ public class GoombaController : MonoBehaviour
     }
 
     void PlayerCollisions(){
-        if (Physics.Raycast(transform.position, -transform.up, out hitInfo, 0.6f))
+        if (Physics.Raycast(transform.position, -transform.up, out hitInfo, RaycastLenght))
         {
             if (hitInfo.collider.CompareTag("Player"))
             {
@@ -61,7 +61,7 @@ public class GoombaController : MonoBehaviour
     }
 
     void ObjectCollisions(){
-        if (Physics.Raycast(transform.position, transform.right, out hitInfo, 0.6f))
+        if (Physics.Raycast(transform.position, transform.right, out hitInfo, RaycastLenght))
         {
             if (hitInfo.collider != null)
             {
