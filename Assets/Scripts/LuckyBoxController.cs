@@ -48,6 +48,7 @@ public class LuckyBoxController : MonoBehaviour
         if(ItemPrefab.CompareTag("Moneda")){
             yield return new WaitForSeconds(0.5f);
             Destroy(generatedItem);
+            ui.IncreaseCoins();
         }
     }
 

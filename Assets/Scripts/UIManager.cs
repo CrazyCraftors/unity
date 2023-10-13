@@ -22,10 +22,11 @@ public class UIManager : MonoBehaviour
     private int currentLevel = 1;
     public float timeElapsed = 0.0f;
 
+    void Start (){
+        StartCoroutine (Tiempo());
+    }
+
     private void Update(){
-        if (GameManager.GameRunning == true){
-            timeElapsed += Time.deltaTime;
-        }
         scoreText.text = score.ToString("D6");
         CoinsText.text = "x" + Coins.ToString("D2");
         LifesText.text = "x     " + Lifes.ToString("D2");
@@ -63,4 +64,14 @@ public class UIManager : MonoBehaviour
         GameManager.GameRunning = true;
         GameManager.hasActivated=false;
     }
+
+    IEnumerator Tiempo(){
+        while(true){
+            if (GameManager.GameRunning == true){
+                timeElapsed ++;
+            }
+            yield return new WaitForSeconds(1f);
+        }
+    }
+    
 }

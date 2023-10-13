@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour
 {
     public static bool GameRunning = false;
     public static bool hasActivated = false;
-    private bool isPaused = false;
     [SerializeField] GameObject play;
     [SerializeField] GameObject ingame;
     [SerializeField] GameObject Inicio;
@@ -27,7 +26,7 @@ public class GameManager : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            GameRunning = !isPaused;
+            GameRunning = !GameRunning;
             Debug.Log(GameRunning);
         }
     }
