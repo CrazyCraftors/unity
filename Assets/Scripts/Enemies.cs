@@ -9,6 +9,7 @@ public class Enemies : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.GameRunning == false)return;
         // Moverse en la dirección actual
         Movement();
 
