@@ -1181,8 +1181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &133587054
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1208,7 +1209,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &172180275
 GameObject:
@@ -1888,8 +1889,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &243842365
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1915,7 +1917,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &261508306
 GameObject:
@@ -2823,8 +2825,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &346705100
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2850,7 +2853,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &347741453
 GameObject:
@@ -2971,8 +2974,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &347741459
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2998,7 +3002,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &351247437
 GameObject:
@@ -3332,8 +3336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &382256923
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3359,7 +3364,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &386201169
 GameObject:
@@ -3690,8 +3695,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &396469061
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3717,7 +3723,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &398428324
 GameObject:
@@ -5654,8 +5660,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &560952372
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5681,7 +5688,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &565185329
 GameObject:
@@ -6045,8 +6052,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &597375776
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6072,7 +6080,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &618750180
 GameObject:
@@ -10757,8 +10765,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &1150978794
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10784,7 +10793,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1151609432
 GameObject:
@@ -13128,8 +13137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &1354923453
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13155,7 +13165,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1355725947
 GameObject:
@@ -14949,8 +14959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &1545544491
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14976,7 +14987,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1553321661
 GameObject:
@@ -15379,8 +15390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &1575137796
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15406,7 +15418,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1582218611
 GameObject:
@@ -16511,8 +16523,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &1751055860
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16538,7 +16551,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1767251002
 GameObject:
@@ -17606,8 +17619,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &1846798843
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17633,7 +17647,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1850441523
 GameObject:
@@ -19270,8 +19284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &2013497265
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19297,7 +19312,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &2017945351
 GameObject:
@@ -19920,8 +19935,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  RaycastLenght: 0.6
+  speed: 4
+  RaycastLength_O: 0.6
+  RaycastLength_P: 1
 --- !u!54 &2034942030
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19947,7 +19963,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &2051346714
 GameObject:

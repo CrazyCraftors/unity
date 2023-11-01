@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
             Debug.Log(GameRunning);
         }
     }
+    
     public void uiInGame(){
         play.SetActive(false);
         ingame.SetActive(true);

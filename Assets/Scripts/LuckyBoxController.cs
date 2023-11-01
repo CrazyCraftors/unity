@@ -36,6 +36,7 @@ public class LuckyBoxController : MonoBehaviour
         hasActivated = true;
         ui.IncreaseScore(200);
     }
+    
     private IEnumerator MoveObjectUp(GameObject obj, Vector3 targetPosition, float speed){
         float journeyLength = Vector3.Distance(obj.transform.position, targetPosition);
         float startTime = Time.time;

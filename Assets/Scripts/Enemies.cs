@@ -1,74 +1,77 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemies : MonoBehaviour
 {
-    public float moveSpeed = 2.0f;
+    public float speed = 2.0f; // Velocidad de movimiento del enemigo
+
+    private Rigidbody rb;
     private bool movingRight = true;
-    private RaycastHit hitInfo;
-    public float RaycastLenght = 0.6f;
+    public float RaycastLength_O = 0.6f;
+    public float RaycastLength_P = 1;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
-        if (GameManager.GameRunning == false)return;
-        // Moverse en la dirección actual
-        Movement();
-
-        // Realizar un raycast para detectar obstáculos
-        ObjectCollisions();
-
-        // Verificar colisiones con el jugador
         PlayerCollisions();
+        ObjectCollisions();
+        FixedUpdate();
+
+        if (transform.position.y < -30){
+            Destroy(gameObject);
+        }
     }
 
-    void Movement(){
-        if (movingRight)
-        {
-            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
-        }
+    void FixedUpdate()
+    {
+        // Mueve al enemigo en la dirección actual
+        Vector3 moveDirection = movingRight ? Vector3.right : Vector3.left;
+        rb.velocity = new Vector3(moveDirection.x * speed, rb.velocity.y, 0);
     }
 
     void ChangeDirection()
     {
+        // Cambia la dirección del enemigo
         movingRight = !movingRight;
-        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 
-    void PlayerCollisions(){
-        if (Physics.Raycast(transform.position, -transform.up, out hitInfo, RaycastLenght))
+    void PlayerCollisions()
+    {
+        // Realiza un raycast hacia la derecha para detectar al jugador
+        RaycastHit hitRight;
+        if (Physics.Raycast(transform.position, Vector3.right, out hitRight, RaycastLength_P) && hitRight.collider.CompareTag("Player"))
         {
-            if (hitInfo.collider.CompareTag("Player"))
-            {
-                Vector3 hitPoint = hitInfo.point;
-                Vector3 goombaPosition = transform.position;
+            Debug.Log("Kill Player");
+        }
 
-                if (hitPoint.x < goombaPosition.x)
-                {
-                    Debug.Log("Kill Player"); // Colisión por la izquierda
-                }
-                else if (hitPoint.x > goombaPosition.x)
-                {
-                    Debug.Log("Kill Player"); // Colisión por la derecha
-                }
-                else
-                {
-                    Debug.Log("Kill Goomba"); // Colisión desde arriba
-                }
-            }
+        // Realiza un raycast hacia la izquierda para detectar al jugador
+        RaycastHit hitLeft;
+        if (Physics.Raycast(transform.position, Vector3.left, out hitLeft, RaycastLength_P) && hitLeft.collider.CompareTag("Player"))
+        {
+            Debug.Log("Kill Player");
+        }
+
+        // Realiza un raycast hacia arriba para detectar colisiones con el jugador
+        RaycastHit hitUp;
+        if (Physics.Raycast(transform.position, Vector3.up, out hitUp, RaycastLength_P) && hitUp.collider.CompareTag("Player"))
+        {
+            Debug.Log("Kill Goomba");
+            Destroy(gameObject);
         }
     }
 
-    void ObjectCollisions(){
-        if (Physics.Raycast(transform.position, transform.right, out hitInfo, RaycastLenght))
+    void ObjectCollisions()
+    {
+        // Comprueba colisiones con cualquier objeto para cambiar de dirección
+        RaycastHit hitObstacle;
+        if (Physics.Raycast(transform.position, Vector3.right, out hitObstacle, RaycastLength_O) || Physics.Raycast(transform.position, Vector3.left, out hitObstacle, RaycastLength_O))
         {
-            if (hitInfo.collider != null)
-            {
-                // Cambiar de dirección al colisionar con un obstáculo
-                ChangeDirection();
-            }
+            ChangeDirection();
         }
     }
 }

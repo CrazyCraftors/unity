@@ -15,6 +15,23 @@ public class MarioController : MonoBehaviour
 
 
     private void Update(){
+        Collisions();
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit){ 
+        if (hit.gameObject.CompareTag("Hongo")){
+            if (!isBigMario){
+                Vector3 newScale = transform.localScale;
+                newScale.y *= bigMarioScaleY;
+                transform.localScale = newScale;
+                isBigMario = true;
+            }
+            Destroy(hit.gameObject);
+            ui.IncreaseScore(1000);
+        }
+    }
+
+    private void Collisions (){
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.up, out hit, raycastLength)){
             if (hit.collider.CompareTag("Ladrillo")){
@@ -48,19 +65,6 @@ public class MarioController : MonoBehaviour
                     luckyBox.ItemLogic();
                 }
             }
-        }
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit){ 
-        if (hit.gameObject.CompareTag("Hongo")){
-            if (!isBigMario){
-                Vector3 newScale = transform.localScale;
-                newScale.y *= bigMarioScaleY;
-                transform.localScale = newScale;
-                isBigMario = true;
-            }
-            Destroy(hit.gameObject);
-            ui.IncreaseScore(1000);
         }
     }
 }

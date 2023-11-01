@@ -41,6 +41,7 @@ public class Movimiento : MonoBehaviour
         }
         controller.Move(playerVelocity * Time.deltaTime);
     }
+    
     void OnControllerColliderHit(ControllerColliderHit hit){
         if (!groundedPlayer && (hit.gameObject.CompareTag("Ladrillo") || hit.gameObject.CompareTag("LuckyBox"))){
             hitCube = true;
