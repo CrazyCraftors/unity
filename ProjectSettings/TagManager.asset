@@ -10,6 +10,7 @@ TagManager:
   - Estrella
   - Flor
   - Moneda
+  - Enemie
   layers:
   - Default
   - TransparentFX

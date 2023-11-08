@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
             if (Player.position.y < respawnCoordinateY){
                 Respawn();
                 hasActivated = true;
-                Debug.Log("aaaa");
             }
         }
 

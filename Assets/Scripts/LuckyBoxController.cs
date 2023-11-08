@@ -21,7 +21,7 @@ public class LuckyBoxController : MonoBehaviour
                     GenerateItem(ItemPrefab);
                 }
             }else{
-                    GenerateItem(ItemPrefab);
+                GenerateItem(ItemPrefab);
             }
             
         }

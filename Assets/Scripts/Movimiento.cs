@@ -18,6 +18,7 @@ public class Movimiento : MonoBehaviour
     }
     void Update(){
         if (GameManager.GameRunning == false)return;
+        
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer){
             hasJumped = false;
