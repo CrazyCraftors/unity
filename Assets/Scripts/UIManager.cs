@@ -33,6 +33,12 @@ public class UIManager : MonoBehaviour
         worldText.text = "WORLD " + currentWorld.ToString() + " - " + currentLevel.ToString();
         worldTextInicio.text = "WORLD " + currentWorld.ToString() + " - " + currentLevel.ToString();
         timeText.text = Mathf.FloorToInt(timeElapsed).ToString("D6");
+
+        //cuando se le da al esc pausa el juego
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            GameManager.GameRunning = !GameManager.GameRunning;
+            Debug.Log(GameManager.GameRunning);
+        }
     }
 
     public void IncreaseScore(int points){

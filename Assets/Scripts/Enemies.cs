@@ -2,58 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemies : MonoBehaviour{
-    public float speed = 5.0f; // Velocidad de movimiento del enemigo
-
+public class Enemies : MonoBehaviour
+{
+    public float speed = 5.0f;
     private Rigidbody rb;
     private bool movingRight = true;
     public float RaycastLength_O = 0.7f;
     public float RaycastLength_P = 0.6f;
-
     public UIManager ui;
 
-    void Start(){
+    void Start()
+    {
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update(){
+    void Update()
+    {
+        if (GameManager.GameRunning == false)return;
         PlayerCollisions();
         ObjectCollisions();
         Movement();
 
-        if (transform.position.y < -30){
+        if (transform.position.y < -30)
+        {
             Destroy(gameObject);
         }
     }
 
-    void Movement(){
-        // Mueve al enemigo en la dirección actual
-        float movimientoHorizontal = Input.GetAxis("Horizontal");
-
+    void Movement()
+    {
+        float movimientoHorizontal = movingRight ? 1 : -1;
         Vector3 movimiento = new Vector3(movimientoHorizontal, 0, 0);
-
-        rb.velocity = movimiento * speed;
-
-        if (movingRight==false)
-        {
-            rb.velocity = new Vector3(-speed, rb.velocity.y, rb.velocity.z);
-        }
-        else if (movingRight==true)
-        {
-            rb.velocity = new Vector3(speed, rb.velocity.y, rb.velocity.z);
-        }
+        rb.velocity = new Vector3(movimiento.x * speed, rb.velocity.y, rb.velocity.z);
     }
 
-    void ChangeDirection(){
+    void ChangeDirection()
+    {
         // Cambia la dirección del enemigo
         movingRight = !movingRight;
     }
 
-    void PlayerCollisions(){
-        // Realiza un raycast hacia la derecha para detectar al jugador
+    void PlayerCollisions()
+    {
+        // Realiza raycasts hacia la derecha e izquierda para detectar al jugador
         RaycastHit hitSides;
-        if (Physics.Raycast(transform.position, Vector3.right, out hitSides, RaycastLength_P) && hitSides.collider.CompareTag("Player")|| 
-        Physics.Raycast(transform.position, Vector3.left, out hitSides, RaycastLength_P) && hitSides.collider.CompareTag("Player"))
+        if (Physics.Raycast(transform.position, Vector3.right * (movingRight ? 1 : -1), out hitSides, RaycastLength_P) && hitSides.collider.CompareTag("Player"))
         {
             Debug.Log("Kill Player");
         }
@@ -68,16 +61,13 @@ public class Enemies : MonoBehaviour{
         }
     }
 
-    void ObjectCollisions(){
+    void ObjectCollisions()
+    {
         // Comprueba colisiones con cualquier objeto para cambiar de dirección
         RaycastHit hitObstacle;
-        if (Physics.Raycast(transform.position, Vector3.right, out hitObstacle, RaycastLength_O) || Physics.Raycast(transform.position, Vector3.left, out hitObstacle, RaycastLength_O))
+        if (Physics.Raycast(transform.position, Vector3.right * (movingRight ? 1 : -1), out hitObstacle, RaycastLength_O))
         {
             ChangeDirection();
         }
-    }
-
-    IEnumerator Pausa (){
-        yield return new WaitForSeconds(1.0f);
     }
 }

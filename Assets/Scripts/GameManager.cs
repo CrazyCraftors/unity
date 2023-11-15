@@ -23,11 +23,6 @@ public class GameManager : MonoBehaviour
                 hasActivated = true;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            GameRunning = !GameRunning;
-            Debug.Log(GameRunning);
-        }
     }
     
     public void uiInGame(){
