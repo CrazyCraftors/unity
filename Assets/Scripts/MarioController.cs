@@ -6,7 +6,7 @@ public class MarioController : MonoBehaviour
     public bool isBigMario = false;
     private Dictionary<GameObject, int> collisionsWithCubes = new Dictionary<GameObject, int>();
     private Dictionary<GameObject, float> lastTimeScoredWithCube = new Dictionary<GameObject, float>();
-    public float bigMarioScaleY = 2f;
+    public float bigMarioScaleY = 1f;
     public float timeBetweenScoring = 0.5f;
     public float raycastLength = 1f;
     public int maxScorePerCube = 3;
@@ -47,8 +47,7 @@ public class MarioController : MonoBehaviour
                     }
                     if (!lastTimeScoredWithCube.ContainsKey(hit.collider.gameObject) || Time.time - lastTimeScoredWithCube[hit.collider.gameObject] >= timeBetweenScoring){
                         if (collisionsWithCubes[hit.collider.gameObject] < maxScorePerCube){
-                            int randomScore = Random.Range(10, 50);
-                            ui.IncreaseScore(randomScore);
+                            ui.IncreaseScore(10);
                             collisionsWithCubes[hit.collider.gameObject]++;
                             lastTimeScoredWithCube[hit.collider.gameObject] = Time.time;
                         }

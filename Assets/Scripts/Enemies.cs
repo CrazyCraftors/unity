@@ -5,8 +5,9 @@ using UnityEngine;
 public class Enemies : MonoBehaviour
 {
     public float speed = 5.0f;
+    public float moveSpeed = 4.0f;
     private Rigidbody rb;
-    private bool movingRight = true;
+    private bool movingRight = false;
     public float RaycastLength_O = 0.7f;
     public float RaycastLength_P = 0.6f;
     public UIManager ui;
@@ -29,8 +30,7 @@ public class Enemies : MonoBehaviour
         }
     }
 
-    void Movement()
-    {
+    void Movement(){
         float movimientoHorizontal = movingRight ? 1 : -1;
         Vector3 movimiento = new Vector3(movimientoHorizontal, 0, 0);
         rb.velocity = new Vector3(movimiento.x * speed, rb.velocity.y, rb.velocity.z);
@@ -57,7 +57,7 @@ public class Enemies : MonoBehaviour
         {
             Debug.Log("Kill Goomba");
             Destroy(gameObject);
-            ui.IncreaseScore(800);
+            ui.IncreaseScore(100);
         }
     }
 

@@ -8,38 +8,37 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject play;
     [SerializeField] GameObject ingame;
     [SerializeField] GameObject Inicio;
+    [SerializeField] GameObject gameoverc;
     public Transform Player;
     public UIManager ui;
+
+    float respawnCoordinateY = -30.0f;
 
     void Start(){
         ingame.SetActive(false);
         Inicio.SetActive(false);
+        gameoverc.SetActive(false);
     }
+
     void Update(){
-        if (!hasActivated){
-            float respawnCoordinateY = -30.0f;
-            if (Player.position.y < respawnCoordinateY){
-                Respawn();
-                hasActivated = true;
-            }
-        }
+        if (Player.position.y < respawnCoordinateY){
+            Respawn();
+        } 
     }
-    
-    public void uiInGame(){
-        play.SetActive(false);
-        ingame.SetActive(true);
-        Inicio.SetActive(false);
-        ui.inicio();
-    }
+
     public void Respawn(){
         GameManager.GameRunning = false;
-        ui.timeElapsed=0;
         StartCoroutine(EsperarYContinuar());
-        ui.DecreaseLifes();
-        ui.inicio();
+        float deaths = ui.DecreaseLifes();
+        if(deaths <= -1){
+            ui.GameOver();
+        }else{
+            ui.inicio();
+        }
+        Debug.Log(deaths);
     }
 
     IEnumerator EsperarYContinuar(){
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
     }
 }

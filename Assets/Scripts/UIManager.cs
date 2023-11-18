@@ -12,15 +12,20 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI LifesText;
     Vector3 SpawnPoint = new Vector3(-224.94f, 1.08f, 0f);
     public Transform Player;
+    public GameManager gm;
 
+
+    [SerializeField] GameObject play;
+    [SerializeField] GameObject ingame;
     [SerializeField] GameObject InicioC;
+    [SerializeField] GameObject canvas_go;
 
     private int score = 0;
     private int Coins = 0;
-    private int Lifes = 3;
+    public int Lifes = 3;
     private int currentWorld = 1;
     private int currentLevel = 1;
-    public float timeElapsed = 0.0f;
+    public int timeElapsed = 400;
 
     void Start (){
         StartCoroutine (Tiempo());
@@ -41,6 +46,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void uiInGame(){
+        play.SetActive(false);
+        ingame.SetActive(true);
+        InicioC.SetActive(false);
+        canvas_go.SetActive(false);
+        inicio();
+    }
+
     public void IncreaseScore(int points){
         score += points;
     }
@@ -49,8 +62,9 @@ public class UIManager : MonoBehaviour
         Coins++;
     }
 
-    public void DecreaseLifes(){
+    public float DecreaseLifes(){
         Lifes--;
+        return(Lifes);
     }
 
     public void ChangeWorldAndLevel(int newWorld, int newLevel){
@@ -62,6 +76,14 @@ public class UIManager : MonoBehaviour
         InicioC.SetActive(true);
         Player.position=(SpawnPoint);
         StartCoroutine(EsperarYContinuar());
+        timeElapsed=400;
+    }
+
+    public void GameOver(){
+        ingame.SetActive(false);
+        canvas_go.SetActive(true);
+        Player.position=(SpawnPoint);
+        StartCoroutine(pausa(5f));
     }
 
     IEnumerator EsperarYContinuar(){
@@ -71,10 +93,22 @@ public class UIManager : MonoBehaviour
         GameManager.hasActivated=false;
     }
 
+    IEnumerator pausa(float tiempo){
+        yield return new WaitForSeconds(tiempo);
+        Lifes=3;
+        score=0;
+        Coins=0;
+        timeElapsed=400;
+        timeText.text="0";
+        play.SetActive(true);
+        canvas_go.SetActive(false); 
+        GameManager.GameRunning = false;
+    }
+
     IEnumerator Tiempo(){
         while(true){
             if (GameManager.GameRunning == true){
-                timeElapsed ++;
+                timeElapsed --;
             }
             yield return new WaitForSeconds(1f);
         }
