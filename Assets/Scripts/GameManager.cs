@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour{
     public static bool GameRunning = false;
     public static bool HasActivated = false;
 
@@ -16,39 +15,32 @@ public class GameManager : MonoBehaviour
     private float respawnCoordinateY = -30.0f;
     private WaitForSeconds waitForSeconds = new WaitForSeconds(4f);
 
-    void Start()
-    {
+    void Start(){
         ingame.SetActive(false);
         inicio.SetActive(false);
         gameoverc.SetActive(false);
     }
 
-    void Update()
-    {
-        if (player.position.y < respawnCoordinateY && GameRunning)
-        {
+    void Update(){
+        if (player.position.y < respawnCoordinateY && GameRunning){
             Respawn();
         }
     }
 
-    public void Respawn()
-    {
+    public void Respawn(){
         GameRunning = false;
         StartCoroutine(EsperarYContinuar());
         float deaths = ui.DecreaseLifes();
-        if (deaths <= -1)
-        {
+        if (deaths <= -1){
             ui.GameOver();
         }
-        else
-        {
+        else{
             ui.inicio();
         }
         Debug.Log(deaths);
     }
 
-    IEnumerator EsperarYContinuar()
-    {
+    IEnumerator EsperarYContinuar(){
         yield return waitForSeconds;
         GameRunning = true;
     }
