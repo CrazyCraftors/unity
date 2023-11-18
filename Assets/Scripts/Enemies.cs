@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemies : MonoBehaviour
 {
     public float speed = 5.0f;
     public float moveSpeed = 4.0f;
-    private Rigidbody rb;
-    private bool movingRight = false;
     public float RaycastLength_O = 0.7f;
     public float RaycastLength_P = 0.6f;
     public UIManager ui;
+
+    private Rigidbody rb;
+    private bool movingRight = false;
+
+    private const string playerTag = "Player";
 
     void Start()
     {
@@ -19,7 +20,9 @@ public class Enemies : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.GameRunning == false)return;
+        if (!GameManager.GameRunning)
+            return;
+
         PlayerCollisions();
         ObjectCollisions();
         Movement();
@@ -30,7 +33,8 @@ public class Enemies : MonoBehaviour
         }
     }
 
-    void Movement(){
+    void Movement()
+    {
         float movimientoHorizontal = movingRight ? 1 : -1;
         Vector3 movimiento = new Vector3(movimientoHorizontal, 0, 0);
         rb.velocity = new Vector3(movimiento.x * speed, rb.velocity.y, rb.velocity.z);
@@ -38,22 +42,17 @@ public class Enemies : MonoBehaviour
 
     void ChangeDirection()
     {
-        // Cambia la dirección del enemigo
         movingRight = !movingRight;
     }
 
     void PlayerCollisions()
     {
-        // Realiza raycasts hacia la derecha e izquierda para detectar al jugador
-        RaycastHit hitSides;
-        if (Physics.Raycast(transform.position, Vector3.right * (movingRight ? 1 : -1), out hitSides, RaycastLength_P) && hitSides.collider.CompareTag("Player"))
+        if (RaycastHitObject(Vector3.right * (movingRight ? 1 : -1), RaycastLength_P, out RaycastHit hitSides) && hitSides.collider.CompareTag(playerTag))
         {
             Debug.Log("Kill Player");
         }
 
-        // Realiza un raycast hacia arriba para detectar colisiones con el jugador
-        RaycastHit hitUp;
-        if (Physics.Raycast(transform.position, Vector3.up, out hitUp, RaycastLength_P) && hitUp.collider.CompareTag("Player"))
+        if (RaycastHitObject(Vector3.up, RaycastLength_P, out RaycastHit hitUp) && hitUp.collider.CompareTag(playerTag))
         {
             Debug.Log("Kill Goomba");
             Destroy(gameObject);
@@ -63,11 +62,14 @@ public class Enemies : MonoBehaviour
 
     void ObjectCollisions()
     {
-        // Comprueba colisiones con cualquier objeto para cambiar de dirección
-        RaycastHit hitObstacle;
-        if (Physics.Raycast(transform.position, Vector3.right * (movingRight ? 1 : -1), out hitObstacle, RaycastLength_O))
+        if (RaycastHitObject(Vector3.right * (movingRight ? 1 : -1), RaycastLength_O, out RaycastHit hitObstacle))
         {
             ChangeDirection();
         }
+    }
+
+    bool RaycastHitObject(Vector3 direction, float length, out RaycastHit hit)
+    {
+        return Physics.Raycast(transform.position, direction, out hit, length);
     }
 }

@@ -19699,9 +19699,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   play: {fileID: 529183766}
   ingame: {fileID: 363001649}
-  Inicio: {fileID: 454577818}
+  inicio: {fileID: 454577818}
   gameoverc: {fileID: 488430379}
-  Player: {fileID: 4001021414698287794}
+  player: {fileID: 4001021414698287794}
   ui: {fileID: 312442293}
 --- !u!4 &2017945353
 Transform:

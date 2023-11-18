@@ -18,17 +18,15 @@ public class MarioController : MonoBehaviour
         Collisions();
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit){ 
-        if (hit.gameObject.CompareTag("Hongo")){
-            if (!isBigMario){
-                Vector3 newScale = transform.localScale;
-                newScale.y *= bigMarioScaleY;
-                transform.localScale = newScale;
-                isBigMario = true;
-            }
-            Destroy(hit.gameObject);
-            ui.IncreaseScore(1000);
+    public void IncreaseSize(GameObject HongoD){ 
+        if (!isBigMario){
+            Vector3 newScale = transform.localScale;
+            newScale.y *= bigMarioScaleY;
+            transform.localScale = newScale;
+            isBigMario = true;
         }
+        Destroy(HongoD);
+        ui.IncreaseScore(1000);
     }
 
     private void Collisions (){

@@ -87,10 +87,10 @@ public class UIManager : MonoBehaviour
     }
 
     IEnumerator EsperarYContinuar(){
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(0.5f);
         InicioC.SetActive(false);
         GameManager.GameRunning = true;
-        GameManager.hasActivated=false;
+        GameManager.HasActivated=false;
     }
 
     IEnumerator pausa(float tiempo){

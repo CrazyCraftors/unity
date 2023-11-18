@@ -71,7 +71,7 @@ public class LuckyBoxController : MonoBehaviour
 
     private IEnumerator MoveObjectUpAndMoveHongo(GameObject obj)
     {
-        float hongoMoveSpeed = moveSpeed * 2.0f; // Ajusta este multiplicador según tus necesidades
+        float hongoMoveSpeed = 4.0f; // Ajusta este multiplicador según tus necesidades
 
         yield return StartCoroutine(MoveObjectUp(obj, transform.position + Vector3.up * moveSpeed, moveSpeed));
         yield return new WaitForSeconds(1.0f);
@@ -80,12 +80,16 @@ public class LuckyBoxController : MonoBehaviour
         {
             obj.transform.Translate(Vector3.right * hongoMoveSpeed * Time.deltaTime);
 
-            Collider2D colliderLeft = Physics2D.OverlapBox(obj.transform.position + Vector3.left * 0.5f, new Vector2(0.5f, 1.0f), 0);
-            Collider2D colliderRight = Physics2D.OverlapBox(obj.transform.position + Vector3.right * 0.5f, new Vector2(0.5f, 1.0f), 0);
+            // Comprobar raycasts a cada lado para cambiar la dirección en 3D
+            RaycastHit hitLeft, hitRight;
+            bool hitLeftObject = Physics.Raycast(obj.transform.position, Vector3.left, out hitLeft, 0.5f);
+            bool hitRightObject = Physics.Raycast(obj.transform.position, Vector3.right, out hitRight, 0.5f);
 
-            if (colliderLeft != null || colliderRight != null)
+            if ( (hitLeftObject && hitLeft.collider.gameObject.tag != "Player") || (hitRightObject && hitRight.collider.gameObject.tag != "Player"))
             {
                 hongoMoveSpeed *= -1;
+            }else if( (hitLeftObject && hitLeft.collider.gameObject.tag == "Player") || (hitRightObject && hitRight.collider.gameObject.tag == "Player")){
+                marioController.IncreaseSize(obj);
             }
 
             yield return null;
