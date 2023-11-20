@@ -53,7 +53,9 @@ public class Enemies : MonoBehaviour{
 
     void ObjectCollisions(){
         if (RaycastHitObject(Vector3.right * (movingRight ? 1 : -1), RaycastLength_O, out RaycastHit hitObstacle)){
-            ChangeDirection();
+            if (!hitObstacle.collider.CompareTag("Trigger")) {
+                ChangeDirection();
+            }
         }
     }
 

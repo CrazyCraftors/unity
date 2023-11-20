@@ -64,13 +64,11 @@ public class LuckyBoxController : MonoBehaviour{
             bool hitRightObject = Physics.Raycast(obj.transform.position, Vector3.right, out hitRight, 0.5f);
 
             if ((hitLeftObject && hitLeft.collider.gameObject.tag != "Player") ||
-                (hitRightObject && hitRight.collider.gameObject.tag != "Player"))
-            {
+                (hitRightObject && hitRight.collider.gameObject.tag != "Player")){
                 hongoMoveSpeed *= -1;
             }
             else if ((hitLeftObject && hitLeft.collider.gameObject.tag == "Player") ||
-                     (hitRightObject && hitRight.collider.gameObject.tag == "Player"))
-            {
+                     (hitRightObject && hitRight.collider.gameObject.tag == "Player")){
                 marioController.IncreaseSize(obj);
             }
 
@@ -80,8 +78,7 @@ public class LuckyBoxController : MonoBehaviour{
 
     private void ChangeLuckyBoxTexture(){
         Renderer boxRenderer = GetComponent<Renderer>();
-        if (boxRenderer && changedMaterial)
-        {
+        if (boxRenderer && changedMaterial){
             boxRenderer.material = changedMaterial;
         }
     }

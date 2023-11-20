@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour{
     private int currentLevel = 1;
     private int timeElapsed = 400;
 
-    private Vector3 SpawnPoint = new Vector3(-224.94f, 1.08f, 0f);
+    private Vector3 SpawnPoint = new Vector3(-238.8f, 1.08f, 0f);
 
     void Start(){
         StartCoroutine(Tiempo());

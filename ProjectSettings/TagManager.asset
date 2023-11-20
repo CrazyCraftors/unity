@@ -11,6 +11,7 @@ TagManager:
   - Flor
   - Moneda
   - Enemie
+  - Trigger
   layers:
   - Default
   - TransparentFX
