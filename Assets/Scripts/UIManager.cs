@@ -88,18 +88,17 @@ public class UIManager : MonoBehaviour{
         ingame.SetActive(false);
         canvas_go.SetActive(true);
         Player.position = SpawnPoint;
-        StartCoroutine(pausa(5f));
+        StartCoroutine(reset());
     }
 
     IEnumerator EsperarYContinuar(){
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(3f);
         InicioC.SetActive(false);
         GameManager.GameRunning = true;
-        GameManager.HasActivated = false;
     }
 
-    IEnumerator pausa(float tiempo){
-        yield return new WaitForSeconds(tiempo);
+    IEnumerator reset(){
+        yield return new WaitForSeconds(5f);
         Lifes = 3;
         score = 0;
         Coins = 0;

@@ -6,6 +6,7 @@ public class Enemies : MonoBehaviour{
     public float RaycastLength_O = 0.7f;
     public float RaycastLength_P = 0.6f;
     public UIManager ui;
+    public GameManager gm;
 
     private Rigidbody rb;
     private bool movingRight = false;
@@ -41,6 +42,7 @@ public class Enemies : MonoBehaviour{
 
     void PlayerCollisions(){
         if (RaycastHitObject(Vector3.right * (movingRight ? 1 : -1), RaycastLength_P, out RaycastHit hitSides) && hitSides.collider.CompareTag(playerTag)){
+            gm.Respawn();
             Debug.Log("Kill Player");
         }
 

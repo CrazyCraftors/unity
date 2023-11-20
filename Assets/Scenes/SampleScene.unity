@@ -1213,6 +1213,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &172180275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,6 +1924,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &261508306
 GameObject:
   m_ObjectHideFlags: 0
@@ -2904,6 +2906,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &347741453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3055,6 +3058,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &351247437
 GameObject:
   m_ObjectHideFlags: 0
@@ -3419,6 +3423,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &386201169
 GameObject:
   m_ObjectHideFlags: 0
@@ -3780,6 +3785,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &398428324
 GameObject:
   m_ObjectHideFlags: 0
@@ -5850,6 +5856,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &565185329
 GameObject:
   m_ObjectHideFlags: 0
@@ -6244,6 +6251,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &618750180
 GameObject:
   m_ObjectHideFlags: 0
@@ -11320,6 +11328,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &1151609432
 GameObject:
   m_ObjectHideFlags: 0
@@ -13694,6 +13703,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &1355725947
 GameObject:
   m_ObjectHideFlags: 0
@@ -15518,6 +15528,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &1553321661
 GameObject:
   m_ObjectHideFlags: 0
@@ -15951,6 +15962,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &1582218611
 GameObject:
   m_ObjectHideFlags: 0
@@ -17523,6 +17535,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &1767251002
 GameObject:
   m_ObjectHideFlags: 0
@@ -18621,6 +18634,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &1850441523
 GameObject:
   m_ObjectHideFlags: 0
@@ -20399,7 +20413,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013497259}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a4d03c211a7626429ac972d042b19f3, type: 3}
   m_Name: 
@@ -20409,6 +20423,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &2017945351
 GameObject:
   m_ObjectHideFlags: 0
@@ -21184,6 +21199,7 @@ MonoBehaviour:
   RaycastLength_O: 0.7
   RaycastLength_P: 0.7
   ui: {fileID: 312442293}
+  gm: {fileID: 2017945352}
 --- !u!1 &2051346714
 GameObject:
   m_ObjectHideFlags: 0
@@ -27297,7 +27313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBigMario: 0
-  bigMarioScaleY: 1.3
+  bigMarioScaleY: 1.25
   timeBetweenScoring: 0.5
   raycastLength: 1.4
   maxScorePerCube: 3

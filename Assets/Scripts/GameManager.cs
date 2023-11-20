@@ -3,7 +3,6 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour{
     public static bool GameRunning = false;
-    public static bool HasActivated = false;
 
     public GameObject play;
     public GameObject ingame;
@@ -13,7 +12,6 @@ public class GameManager : MonoBehaviour{
     public UIManager ui;
 
     private float respawnCoordinateY = -30.0f;
-    private WaitForSeconds waitForSeconds = new WaitForSeconds(4f);
 
     void Start(){
         ingame.SetActive(false);
@@ -30,18 +28,16 @@ public class GameManager : MonoBehaviour{
     public void Respawn(){
         GameRunning = false;
         StartCoroutine(EsperarYContinuar());
+    }
+
+    IEnumerator EsperarYContinuar(){
+        yield return new WaitForSeconds(3f);
         float deaths = ui.DecreaseLifes();
-        if (deaths <= -1){
+        if (deaths <= 0){
             ui.GameOver();
         }
         else{
             ui.inicio();
         }
-        Debug.Log(deaths);
-    }
-
-    IEnumerator EsperarYContinuar(){
-        yield return waitForSeconds;
-        GameRunning = true;
     }
 }
