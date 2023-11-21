@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Enemies : MonoBehaviour{
     public float speed = 5.0f;
@@ -7,11 +8,13 @@ public class Enemies : MonoBehaviour{
     public float RaycastLength_P = 0.6f;
     public UIManager ui;
     public GameManager gm;
+    public AudioController ac;
+    public MarioController mc;
+
+    bool invulnerability;
 
     private Rigidbody rb;
     private bool movingRight = false;
-
-    private const string playerTag = "Player";
 
     void Start(){
         rb = GetComponent<Rigidbody>();
@@ -41,13 +44,23 @@ public class Enemies : MonoBehaviour{
     }
 
     void PlayerCollisions(){
-        if (RaycastHitObject(Vector3.right * (movingRight ? 1 : -1), RaycastLength_P, out RaycastHit hitSides) && hitSides.collider.CompareTag(playerTag)){
-            gm.Respawn();
-            Debug.Log("Kill Player");
+        if ((RaycastHitObject(Vector3.right , RaycastLength_P, out RaycastHit hitSides) && hitSides.collider.CompareTag("Player"))||
+            (RaycastHitObject(Vector3.left , RaycastLength_P, out hitSides) && hitSides.collider.CompareTag("Player"))){
+            if(mc.isBigMario==true){
+                invulnerability = true;
+                ac.PlayBigMarioHitSound();
+                mc.newScale.y = 2;
+                mc.transform.localScale = mc.newScale;
+                mc.isBigMario = false;
+                StartCoroutine(pausa());
+            }else if(invulnerability==false){
+                gm.Respawn();
+                Debug.Log("Kill Player");
+            }
         }
 
-        if (RaycastHitObject(Vector3.up, RaycastLength_P, out RaycastHit hitUp) && hitUp.collider.CompareTag(playerTag)){
-            Debug.Log("Kill Goomba");
+        if (RaycastHitObject(Vector3.up, RaycastLength_P, out RaycastHit hitUp) && hitUp.collider.CompareTag("Player")){
+            ac.PlayHitBlockSound();
             Destroy(gameObject);
             ui.IncreaseScore(100);
         }
@@ -63,5 +76,10 @@ public class Enemies : MonoBehaviour{
 
     bool RaycastHitObject(Vector3 direction, float length, out RaycastHit hit){
         return Physics.Raycast(transform.position, direction, out hit, length);
+    }
+
+    IEnumerator pausa(){
+        yield return new WaitForSeconds(3f);
+        invulnerability = false;
     }
 }

@@ -6,10 +6,12 @@ public class LuckyBoxController : MonoBehaviour{
     public GameObject moneda;
     private GameObject generatedItem;
     public float moveSpeed = 1.0f;
+    public float RaycastLength_P = 0.6f;
     private bool hasActivated = false;
     public Material changedMaterial;
     public MarioController marioController;
     public UIManager ui;
+    public AudioController ac;
 
     public void ItemLogic(){
         if (hasActivated) return;
@@ -44,6 +46,7 @@ public class LuckyBoxController : MonoBehaviour{
 
         if (obj.CompareTag("Moneda")){
             yield return new WaitForSeconds(0.5f);
+            ac.PlayLuckyBoxCoinSound();
             Destroy(obj);
             ui.IncreaseCoins();
             ui.IncreaseScore(200);
@@ -54,6 +57,7 @@ public class LuckyBoxController : MonoBehaviour{
         float hongoMoveSpeed = 4.0f;
 
         yield return MoveObjectUp(obj, transform.position + Vector3.up * moveSpeed, moveSpeed);
+        ac.PlayLuckyBoxMushroomSound();
         yield return new WaitForSeconds(1.0f);
 
         while (obj){
@@ -66,13 +70,19 @@ public class LuckyBoxController : MonoBehaviour{
             if ((hitLeftObject && hitLeft.collider.gameObject.tag != "Player") ||
                 (hitRightObject && hitRight.collider.gameObject.tag != "Player")){
                 hongoMoveSpeed *= -1;
+            }else {
+                Vector3[] directions = { Vector3.right, Vector3.left, Vector3.up };
+                foreach (Vector3 direction in directions)
+                {
+                    if (Physics.Raycast(obj.transform.position, direction, out RaycastHit hitSides, RaycastLength_P) && hitSides.collider.CompareTag("Player"))
+                    {
+                        ac.PlayPowerUpSound();
+                        marioController.IncreaseSize(obj);
+                        break; // Termina el bucle si se encuentra un jugador en alguna dirección
+                    }
+                }
+                yield return null;
             }
-            else if ((hitLeftObject && hitLeft.collider.gameObject.tag == "Player") ||
-                     (hitRightObject && hitRight.collider.gameObject.tag == "Player")){
-                marioController.IncreaseSize(obj);
-            }
-
-            yield return null;
         }
     }
 

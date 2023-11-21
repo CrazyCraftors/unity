@@ -13,6 +13,7 @@ public class ActivadorObjeto : MonoBehaviour{
                     }
                 }
             }
+            
         }
     }
 }

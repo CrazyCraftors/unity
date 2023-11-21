@@ -48,4 +48,12 @@ Preset:
     propertyPath: gm
     value: 
     objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ac
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mc
+    value: 
+    objectReference: {fileID: 0}
   m_ExcludedProperties: []

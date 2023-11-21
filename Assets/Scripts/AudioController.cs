@@ -2,96 +2,106 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    public AudioSource levelMusic;
+    public AudioClip menuMusic;
+    public AudioClip levelMusic;
     public AudioClip pauseSound;
-    public AudioClip resumeSound;
-    public AudioClip startLevelSound;
-    public AudioClip cubeHitSmallSound;
-    public AudioClip cubeHitBigSound;
+    public AudioClip unpauseSound;
+    public AudioClip smallMarioHitSound;
+    public AudioClip bigMarioHitSound;
+    public AudioClip breakBlockSound;
+    public AudioClip hitBlockSound;
     public AudioClip luckyBoxCoinSound;
     public AudioClip luckyBoxMushroomSound;
     public AudioClip powerUpSound;
-    public AudioClip hitByEnemySound;
-    public AudioClip deathSound;
     public AudioClip gameOverSound;
+    public AudioClip winSound;
+    public AudioClip jumpSound;
 
-    private bool isPaused = false;
+    public AudioSource menuMusicSource;
+    public AudioSource levelMusicSource;
+    public AudioSource soundEffectSource;
 
-    void Start()
+    private void Start()
     {
-        // Reproduce la música del nivel en bucle al inicio.
-        PlayLevelMusic(startLevelSound);
+        menuMusicSource = gameObject.AddComponent<AudioSource>();
+        levelMusicSource = gameObject.AddComponent<AudioSource>();
+        soundEffectSource = gameObject.AddComponent<AudioSource>();
+
+        menuMusicSource.clip = menuMusic;
+        menuMusicSource.loop = true;
+        menuMusicSource.Play();
+
+        levelMusicSource.clip = levelMusic;
+        levelMusicSource.loop = true;
     }
 
-    void Update()
+    public void PauseLevelMusic()
     {
-        // Ejemplo: Pausa y reanuda la música del nivel con la tecla P.
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            TogglePause();
-        }
+        levelMusicSource.Pause();
     }
 
-    public void TogglePause()
+    public void UnpauseLevelMusic()
     {
-        if (isPaused)
-        {
-            // Resumen del juego
-            ResumeGame();
-        }
-        else
-        {
-            // Pausa el juego
-            PauseGame();
-        }
+        levelMusicSource.UnPause();
     }
 
-    void PauseGame()
+    public void PlayPauseSound()
     {
-        isPaused = true;
-        levelMusic.Pause();
-        // Reproduce el sonido de pausa.
-        PlaySound(pauseSound);
+        soundEffectSource.PlayOneShot(pauseSound);
     }
 
-    void ResumeGame()
+    public void PlayUnpauseSound()
     {
-        isPaused = false;
-        levelMusic.UnPause();
-        // Reproduce el sonido de reanudación.
-        PlaySound(resumeSound);
+        soundEffectSource.PlayOneShot(unpauseSound);
     }
 
-    public void PlayLevelMusic(AudioClip clip)
+    public void PlaySmallMarioHitSound()
     {
-        levelMusic.clip = clip;
-        levelMusic.loop = true;
-        levelMusic.Play();
+        soundEffectSource.PlayOneShot(smallMarioHitSound);
     }
 
-    // Otros métodos para reproducir sonidos específicos, por ejemplo:
-    public void PlayCubeHitSmallSound()
+    public void PlayBigMarioHitSound()
     {
-        PlaySound(cubeHitSmallSound);
+        soundEffectSource.PlayOneShot(bigMarioHitSound);
     }
 
-    public void PlayCubeHitBigSound()
+    public void PlayBreakBlockSound()
     {
-        PlaySound(cubeHitBigSound);
+        soundEffectSource.PlayOneShot(breakBlockSound);
     }
 
-    // Agrega métodos similares para los demás sonidos.
-
-    void PlaySound(AudioClip clip)
+    public void PlayHitBlockSound()
     {
-        AudioSource.PlayClipAtPoint(clip, transform.position);
+        soundEffectSource.PlayOneShot(hitBlockSound);
+    }
+
+    public void PlayLuckyBoxCoinSound()
+    {
+        soundEffectSource.PlayOneShot(luckyBoxCoinSound);
+    }
+
+    public void PlayLuckyBoxMushroomSound()
+    {
+        soundEffectSource.PlayOneShot(luckyBoxMushroomSound);
+    }
+
+    public void PlayPowerUpSound()
+    {
+        soundEffectSource.PlayOneShot(powerUpSound);
     }
 
     public void PlayGameOverSound()
     {
-        // Pausa cualquier sonido antes de reproducir el sonido de Game Over.
-        levelMusic.Pause();
-        // Reproduce el sonido de Game Over.
-        PlaySound(gameOverSound);
+        soundEffectSource.PlayOneShot(gameOverSound);
+    }
+
+    public void PlayJumpSound()
+    {
+        soundEffectSource.PlayOneShot(jumpSound);
+    }
+
+    public void PlayWinSound()
+    {
+        soundEffectSource.PlayOneShot(winSound);
     }
 }

@@ -5,20 +5,30 @@ public class MarioController : MonoBehaviour{
     public bool isBigMario = false;
     private Dictionary<GameObject, int> collisionsWithCubes = new Dictionary<GameObject, int>();
     private Dictionary<GameObject, float> lastTimeScoredWithCube = new Dictionary<GameObject, float>();
-    public float bigMarioScaleY = 1f;
+    public float bigMarioScaleY = 1.25f;
     public float timeBetweenScoring = 0.5f;
     public float raycastLength = 1f;
     public int maxScorePerCube = 3;
     public Material newMaterial;
     public UIManager ui;
+    public AudioController ac;
+
+    public Vector3 newScale;
+    public float coordenadaX;
+    Transform objetoTransform;
+
+    void Start(){
+        objetoTransform = GetComponent<Transform>();
+    }
 
     private void Update(){
         Collisions();
+        coordenadaX = objetoTransform.position.x;
     }
 
     public void IncreaseSize(GameObject HongoD){
         if (!isBigMario){
-            Vector3 newScale = transform.localScale;
+            newScale = transform.localScale;
             newScale.y *= bigMarioScaleY;
             transform.localScale = newScale;
             isBigMario = true;
@@ -63,6 +73,7 @@ public class MarioController : MonoBehaviour{
 
         if (!lastTimeScoredWithCube.ContainsKey(hit.collider.gameObject) || Time.time - lastTimeScoredWithCube[hit.collider.gameObject] >= timeBetweenScoring){
             if (collisionsWithCubes[hit.collider.gameObject] < maxScorePerCube){
+                ac.PlayHitBlockSound();
                 ui.IncreaseScore(10);
                 collisionsWithCubes[hit.collider.gameObject]++;
                 lastTimeScoredWithCube[hit.collider.gameObject] = Time.time;
@@ -72,6 +83,7 @@ public class MarioController : MonoBehaviour{
 
     private void HandleBigMarioCollision(RaycastHit hit){
         ui.IncreaseScore(50);
+        ac.PlayBreakBlockSound();
         Destroy(hit.collider.gameObject);
     }
 

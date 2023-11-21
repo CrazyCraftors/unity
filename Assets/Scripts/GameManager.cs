@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour{
     public GameObject gameoverc;
     public Transform player;
     public UIManager ui;
+    public AudioController ac;
 
     private float respawnCoordinateY = -30.0f;
 
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour{
 
     public void Respawn(){
         GameRunning = false;
+        ac.levelMusicSource.Pause();
+        ac.PlaySmallMarioHitSound();
         StartCoroutine(EsperarYContinuar());
     }
 
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour{
         yield return new WaitForSeconds(3f);
         float deaths = ui.DecreaseLifes();
         if (deaths <= 0){
+            ac.PlayGameOverSound();
             ui.GameOver();
         }
         else{

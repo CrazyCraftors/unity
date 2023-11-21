@@ -12,6 +12,8 @@ public class Movimiento : MonoBehaviour{
     public float gravity = -9.81f;
     public float extraFallForce = 10.0f;
 
+    public AudioController ac;
+
     private void Start(){
         controller = GetComponent<CharacterController>();
     }
@@ -67,6 +69,7 @@ public class Movimiento : MonoBehaviour{
         if (Input.GetButtonDown("Jump") && (!hasJumped || groundedPlayer)){
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             hasJumped = true;
+            ac.PlayJumpSound();
         }
     }
 
